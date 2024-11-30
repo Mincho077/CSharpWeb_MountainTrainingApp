@@ -1,6 +1,6 @@
 ﻿namespace MountainTrainingApp.Common
 {
-    public static class ApplicationConstats
+    public static class GeneralApplicationConstats
     {
         public const int ReleasedYear = 2024;
     }
