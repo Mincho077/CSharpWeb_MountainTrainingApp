@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainTrainingApp.Services.Data", "MountainTrainingApp.Services.Data\MountainTrainingApp.Services.Data.csproj", "{994FC0AF-4DA9-40EE-8B30-CCB2A9BA8D9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainTrainingApp.Web.Infrastructure", "MountainTrainingApp.Web.Infrastructure\MountainTrainingApp.Web.Infrastructure.csproj", "{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{994FC0AF-4DA9-40EE-8B30-CCB2A9BA8D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{994FC0AF-4DA9-40EE-8B30-CCB2A9BA8D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{994FC0AF-4DA9-40EE-8B30-CCB2A9BA8D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +67,6 @@ Global
 		{43115B6F-2F22-47A7-8413-4CA1E8F71A53} = {C5816B07-68E4-4F53-86E7-18E0BF386436}
 		{7A2BA016-07A0-48A7-8B4C-6750E0E81C20} = {43347F1B-B35D-42AA-A097-E01E0B9F532B}
 		{994FC0AF-4DA9-40EE-8B30-CCB2A9BA8D9A} = {CD7BC50A-ECDE-4128-976C-8D357E4F461A}
+		{6DCC9854-161B-4AB1-80A7-9A58EC67C3FC} = {43347F1B-B35D-42AA-A097-E01E0B9F532B}
 	EndGlobalSection
 EndGlobal
