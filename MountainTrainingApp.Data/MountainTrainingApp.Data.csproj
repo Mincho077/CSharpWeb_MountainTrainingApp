@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MountainTrainingApp.Common\MountainTrainingApp.Common.csproj" />
+  </ItemGroup>
+
 </Project>
