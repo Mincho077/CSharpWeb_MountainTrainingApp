@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MountainTrainingApp.Common\MountainTrainingApp.Common.csproj" />
+    <ProjectReference Include="..\MountainTrainingApp.Data.Models\MountainTrainingApp.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

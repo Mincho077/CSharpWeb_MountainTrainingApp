@@ -1,8 +1,8 @@
 namespace MountainTrainingApp.Web
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using MountainTrainingApp.Web.Data;
+    using MountainTrainingApp.Data;
+    using MountainTrainingApp.Data.Models;
 
     public class Program
     {
@@ -14,14 +14,14 @@ namespace MountainTrainingApp.Web
                 builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             builder.Services
-                .AddDbContext<ApplicationDbContext>(options =>
+                .AddDbContext<MountainTrainigAppDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
             { 
                 options.SignIn.RequireConfirmedAccount = false; 
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<MountainTrainigAppDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
