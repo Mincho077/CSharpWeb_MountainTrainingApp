@@ -7,6 +7,7 @@
         public TrainingPeriod()
         {
             AerobicWorkouts = new HashSet<AerobicWorkout>();
+            Climbings = new HashSet<Climbing>();
         }
 
         [Key]
@@ -17,5 +18,7 @@
         public string Name { get; set; } = null!;
 
         public virtual IEnumerable<AerobicWorkout> AerobicWorkouts { get; set; }
+        public virtual IEnumerable<Climbing> Climbings { get; set; }
+
     }
 }
