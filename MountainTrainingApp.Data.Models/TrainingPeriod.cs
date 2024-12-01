@@ -1,7 +1,7 @@
 ﻿namespace MountainTrainingApp.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using static Common.EntityValidationConstants.TrainingPeriod;
+    using static Common.EntityValidationConstants.TrainingPeriodConstants;
     public class TrainingPeriod
     {
         public TrainingPeriod()

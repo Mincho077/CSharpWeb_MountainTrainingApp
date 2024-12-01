@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using static Common.EntityValidationConstants.AerobicWorkoutConstats;
+    using static Common.EntityValidationConstants.AerobicWorkoutConstants;
     public class AerobicWorkout
     {
         public AerobicWorkout()
