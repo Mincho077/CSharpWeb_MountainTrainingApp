@@ -4,6 +4,8 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Models;
+    using System.Reflection;
+
     public class MountainTrainigAppDbContext : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>
     {
         public MountainTrainigAppDbContext(DbContextOptions<MountainTrainigAppDbContext> options)
@@ -26,5 +28,16 @@
         public DbSet<TrainingPeriod> TrainingPeriods { get; set; }
 
         public DbSet<Trainer> Trainers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(MountainTrainigAppDbContext)) ??
+                Assembly.GetExecutingAssembly();
+
+            builder.ApplyConfigurationsFromAssembly(assembly);
+
+            base.OnModelCreating(builder);
+
+        }
     }
 }

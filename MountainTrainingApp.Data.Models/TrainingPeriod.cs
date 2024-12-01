@@ -8,6 +8,7 @@
         {
             AerobicWorkouts = new HashSet<AerobicWorkout>();
             Climbings = new HashSet<Climbing>();
+            StrengthWorkouts = new HashSet<StrengthWorkout>();
         }
 
         [Key]
@@ -19,6 +20,7 @@
 
         public virtual IEnumerable<AerobicWorkout> AerobicWorkouts { get; set; }
         public virtual IEnumerable<Climbing> Climbings { get; set; }
+        public virtual IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
 
     }
 }
