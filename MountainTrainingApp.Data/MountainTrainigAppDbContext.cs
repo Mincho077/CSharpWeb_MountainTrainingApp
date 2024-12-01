@@ -10,5 +10,17 @@
             : base(options)
         {
         }
+
+        public DbSet<AerobicActivity> AerobicActivities { get; set; }
+
+        public DbSet<AerobicWorkout> AerobicWorkouts { get; set; }
+
+        public DbSet<StrengthExercise> StrengthExercises { get; set; }
+
+        public DbSet<StrengthWorkout> StrengthWorkouts { get; set; }
+
+        public DbSet<TrainingPeriod> TrainingPeriods { get; set; }
+
+        public DbSet<Trainer> Trainers { get; set; }
     }
 }
