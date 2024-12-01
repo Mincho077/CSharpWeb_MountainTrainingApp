@@ -21,7 +21,7 @@
         [Required]
         public int Repetitions { get; set; }
 
-        public IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
+        public virtual IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
 
     }
 }

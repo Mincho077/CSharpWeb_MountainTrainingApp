@@ -42,5 +42,17 @@
         [ForeignKey(nameof(TrainingPeriodId))]
         public virtual TrainingPeriod TrainingPeriod { get; set; }= null!;
 
+        [Required]
+        public Guid AthletId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(AthletId))]
+        public virtual ApplicationUser Athlet { get; set; }
+
+        public Guid? TrainerId { get; set; }
+
+        [ForeignKey(nameof(TrainerId))]
+        public virtual Trainer? Trainer { get; set; }
+
     }
 }

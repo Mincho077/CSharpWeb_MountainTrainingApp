@@ -2,7 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using static Common.EntityValidationConstants.AerobicWorkoutConstants;
     public class StrengthWorkout
     {
         public StrengthWorkout()
@@ -26,8 +25,20 @@
 
         [Required]
         [ForeignKey(nameof(TrainingPeriodId))]
-        public TrainingPeriod TrainingPeriod { get; set; } = null!;
+        public virtual TrainingPeriod TrainingPeriod { get; set; } = null!;
 
-        public IEnumerable<StrengthExercise> StrengthExercises { get; set; }
+        [Required]
+        public Guid AthletId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(AthletId))]
+        public virtual ApplicationUser Athlet { get; set; } = null!;
+
+        public Guid? TrainerId { get; set; }
+
+        [ForeignKey(nameof(TrainerId))]
+        public virtual Trainer? Trainer { get; set; }
+
+        public virtual IEnumerable<StrengthExercise> StrengthExercises { get; set; }
     }
 }
