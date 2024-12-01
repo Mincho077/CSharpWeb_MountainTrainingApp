@@ -11,6 +11,19 @@ namespace MountainTrainingApp.Common
 
         }
 
+        public static class ClimbingActivityConstants
+        {
+
+            public const int NameMinLength = 5;
+            public const int NameMaxLength = 50;
+
+        }
+
+        public static class ClimbingConstants
+        {
+
+        }
+
         public static class TrainingPeriodConstants
         {
 

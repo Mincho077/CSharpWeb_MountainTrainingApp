@@ -7,7 +7,7 @@
     {
         public AerobicWorkout()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
         [Key]
         public Guid Id { get; set; }
@@ -47,7 +47,7 @@
 
         [Required]
         [ForeignKey(nameof(AthletId))]
-        public virtual ApplicationUser Athlet { get; set; }
+        public virtual ApplicationUser Athlet { get; set; }=null!;
 
         public Guid? TrainerId { get; set; }
 

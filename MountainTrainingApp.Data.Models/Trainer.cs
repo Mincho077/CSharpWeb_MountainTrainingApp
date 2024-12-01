@@ -6,6 +6,10 @@
 
     public class Trainer
     {
+        public Trainer()
+        {
+            Id = Guid.NewGuid();
+        }
         [Key]
         public Guid Id { get; set; }
 
