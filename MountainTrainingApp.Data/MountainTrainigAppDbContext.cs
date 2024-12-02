@@ -13,21 +13,23 @@
         {
         }
 
-        public DbSet<AerobicActivity> AerobicActivities { get; set; }
+        public DbSet<AerobicActivity> AerobicActivities { get; set; } = null!;
 
-        public DbSet<AerobicWorkout> AerobicWorkouts { get; set; }
+        public DbSet<AerobicWorkout> AerobicWorkouts { get; set; } = null!;
 
-        public DbSet<StrengthExercise> StrengthExercises { get; set; }
+        public DbSet<StrengthExercise> StrengthExercises { get; set; } = null!;
 
-        public DbSet<StrengthWorkout> StrengthWorkouts { get; set; }
+        public DbSet<StrengthWorkout> StrengthWorkouts { get; set; } = null!;
 
-        public DbSet<ClimbingActivity> ClimbingActivities { get; set; }
+        public DbSet<StrengthWorkoutType> StrengthWorkoutTypes { get; set; } = null!;
 
-        public DbSet<Climbing> Climbings { get; set; }
+        public DbSet<ClimbingActivity> ClimbingActivities { get; set; } = null!;
 
-        public DbSet<TrainingPeriod> TrainingPeriods { get; set; }
+        public DbSet<Climbing> Climbings { get; set; } = null!;
 
-        public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<TrainingPeriod> TrainingPeriods { get; set; } = null!;
+
+        public DbSet<Trainer> Trainers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
