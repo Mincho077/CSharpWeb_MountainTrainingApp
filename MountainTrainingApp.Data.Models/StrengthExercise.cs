@@ -6,7 +6,7 @@
     {
         public StrengthExercise()
         {
-            StrengthWorkouts=new HashSet<StrengthWorkout>();
+            StrengthWorkoutTypes = new HashSet<StrengthWorkoutType>();
         }
         [Key]
         public int Id { get; set; }
@@ -15,13 +15,7 @@
         [MaxLength(NameMaxLength)]
         public string Name { get; set; } = null!;
 
-        [Required]
-        public double AddedWeight { get; set; }
-
-        [Required]
-        public int Repetitions { get; set; }
-
-        public virtual IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
+        public virtual IEnumerable<StrengthWorkoutType> StrengthWorkoutTypes { get; set; }
 
     }
 }

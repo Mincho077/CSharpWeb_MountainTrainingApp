@@ -8,8 +8,9 @@
         public void Configure(EntityTypeBuilder<StrengthWorkout> builder)
         {
             builder
-              .HasMany(m => m.StrengthExercises)
-              .WithMany(mt => mt.StrengthWorkouts);
+              .HasOne(m => m.StrengthWorkoutType)
+              .WithMany(mt => mt.StrengthWorkouts)
+              .OnDelete(DeleteBehavior.Restrict);
               
             builder
              .HasOne(m => m.TrainingPeriod)
