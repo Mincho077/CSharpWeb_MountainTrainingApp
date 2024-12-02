@@ -18,6 +18,12 @@
                 .WithMany(mf => mf.AerobicWorkouts)
                 .HasForeignKey(m => m.TrainingPeriodId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+             .HasOne(m => m.Trainer)
+             .WithMany(mf => mf.AerobicWorkouts)
+             .HasForeignKey(m => m.TrainerId)
+             .OnDelete(DeleteBehavior.Restrict);
         }
 
     }
