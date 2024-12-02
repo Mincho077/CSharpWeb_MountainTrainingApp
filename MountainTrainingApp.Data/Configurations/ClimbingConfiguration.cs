@@ -8,15 +8,21 @@
         public void Configure(EntityTypeBuilder<Climbing> builder)
         {
             builder
-               .HasOne(m => m.ClimbingActivity)
-               .WithMany(mt => mt.Climbings)
-               .HasForeignKey(m => m.ClimbingActivityId)
-               .OnDelete(DeleteBehavior.Restrict);
+              .HasOne(c => c.ClimbingActivity)
+              .WithMany(ca => ca.Climbings)
+              .HasForeignKey(c => c.ClimbingActivityId)
+              .OnDelete(DeleteBehavior.Restrict);
 
             builder
-             .HasOne(m => m.TrainingPeriod)
-             .WithMany(mt => mt.Climbings)
-             .HasForeignKey(m => m.TrainingPeriodId)
+             .HasOne(c => c.TrainingPeriod)
+             .WithMany(tp => tp.Climbings)
+             .HasForeignKey(c => c.TrainingPeriodId)
+             .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+             .HasOne(c => c.Trainer)
+             .WithMany(tp => tp.Climbings)
+             .HasForeignKey(c => c.TrainerId)
              .OnDelete(DeleteBehavior.Restrict);
         }
     }
