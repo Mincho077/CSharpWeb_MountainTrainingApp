@@ -8,14 +8,20 @@
         public void Configure(EntityTypeBuilder<StrengthWorkout> builder)
         {
             builder
-              .HasOne(m => m.StrengthWorkoutType)
-              .WithMany(mt => mt.StrengthWorkouts)
+              .HasOne(sw => sw.StrengthWorkoutType)
+              .WithMany(swt => swt.StrengthWorkouts)
               .OnDelete(DeleteBehavior.Restrict);
               
             builder
-             .HasOne(m => m.TrainingPeriod)
-             .WithMany(mt => mt.StrengthWorkouts)
-             .HasForeignKey(m => m.TrainingPeriodId)
+             .HasOne(sw => sw.TrainingPeriod)
+             .WithMany(tp => tp.StrengthWorkouts)
+             .HasForeignKey(sw =>sw.TrainingPeriodId)
+             .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+             .HasOne(sw => sw.Trainer)
+             .WithMany(t => t.StrengthWorkouts)
+             .HasForeignKey(sw => sw.TrainerId)
              .OnDelete(DeleteBehavior.Restrict);
         }
     }
