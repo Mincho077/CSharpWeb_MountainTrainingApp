@@ -14,7 +14,7 @@
             this.context = context;
         }
 
-        public async Task Create(string userId, RegisterTrainerViewModel model)
+        public async Task CreateTrainerAsync(string userId, RegisterTrainerViewModel model)
         {
             Trainer trainer=new Trainer() 
             { 
