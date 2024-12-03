@@ -16,6 +16,9 @@
         [MaxLength(NameMaxLength)]
         public string Name { get; set; } = null!;
 
+        [Required]
+        public bool IsDeleted { get; set; }
+
         public virtual IEnumerable<AerobicWorkout> AerobicWorkouts { get; set; }
     }
 }

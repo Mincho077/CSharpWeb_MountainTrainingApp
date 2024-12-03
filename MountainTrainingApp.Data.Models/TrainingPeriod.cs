@@ -22,5 +22,8 @@
         public virtual IEnumerable<Climbing> Climbings { get; set; }
         public virtual IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
 
+        [Required]
+        public bool IsDeleted { get; set; }
+
     }
 }

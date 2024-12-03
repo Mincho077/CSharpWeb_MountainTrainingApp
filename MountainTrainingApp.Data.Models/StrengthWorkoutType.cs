@@ -6,8 +6,7 @@
     {
         public StrengthWorkoutType()
         {
-            StrengthExercises = new HashSet<StrengthExercise>();
-            StrengthWorkouts = new HashSet<StrengthWorkout>();
+            StrengthWorkouts=new HashSet<StrengthWorkout>(); 
         }
 
         [Key]
@@ -18,8 +17,7 @@
         public string Name { get; set; } = null!;
 
         public virtual IEnumerable<StrengthWorkout> StrengthWorkouts { get; set; }
-
-        public virtual IEnumerable<StrengthExercise> StrengthExercises { get; set; }
+        
 
     }
 }

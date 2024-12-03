@@ -17,8 +17,6 @@
 
         public DbSet<AerobicWorkout> AerobicWorkouts { get; set; } = null!;
 
-        public DbSet<StrengthExercise> StrengthExercises { get; set; } = null!;
-
         public DbSet<StrengthWorkout> StrengthWorkouts { get; set; } = null!;
 
         public DbSet<StrengthWorkoutType> StrengthWorkoutTypes { get; set; } = null!;

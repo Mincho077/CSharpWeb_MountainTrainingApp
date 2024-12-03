@@ -17,5 +17,8 @@
 
         public virtual IEnumerable<Climbing> Climbings { get; set; }
 
+        [Required]
+        public bool IsDeleted { get; set; }
+
     }
 }

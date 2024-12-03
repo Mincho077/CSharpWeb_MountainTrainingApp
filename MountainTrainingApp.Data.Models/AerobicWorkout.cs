@@ -54,5 +54,8 @@
         [ForeignKey(nameof(TrainerId))]
         public virtual Trainer? Trainer { get; set; }
 
+        [Required]
+        public bool IsDeleted { get; set; }
+
     }
 }

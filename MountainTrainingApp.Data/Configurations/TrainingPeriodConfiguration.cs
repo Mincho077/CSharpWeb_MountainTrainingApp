@@ -27,7 +27,7 @@
             period = new TrainingPeriod()
             {
                 Id =2,
-                Name = "Base,Max strength",
+                Name = "Base"
             };
 
             periods.Add(period);
@@ -35,14 +35,6 @@
             period = new TrainingPeriod()
             {
                 Id =3,
-                Name = "Base,Muscle endurance",
-            };
-
-            periods.Add(period);
-
-            period = new TrainingPeriod()
-            {
-                Id =4,
                 Name = "Specific",
             };
 
