@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace MountainTrainingApp.Web.Controllers
+﻿namespace MountainTrainingApp.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    [Authorize]
     public class TrainerController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
