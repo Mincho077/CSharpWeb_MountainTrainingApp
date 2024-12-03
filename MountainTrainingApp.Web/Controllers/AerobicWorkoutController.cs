@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace MountainTrainingApp.Web.Controllers
+﻿namespace MountainTrainingApp.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     public class AerobicWorkoutController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
