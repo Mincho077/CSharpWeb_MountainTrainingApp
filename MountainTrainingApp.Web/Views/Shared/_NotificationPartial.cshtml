@@ -1,0 +1,21 @@
+﻿@using static MountainTrainingApp.Common.NotificationMessagesConstants;
+@if (TempData.ContainsKey(ErrorMesage))
+{
+    <script>toastr.error('@TempData[ErrorMesage]')</script>
+
+}
+
+@if (TempData.ContainsKey(WarningMessage))
+{
+    <script>toastr.warning('@TempData[WarningMessage]')</script>
+}
+
+@if (TempData.ContainsKey(InformationMessage))
+{
+    <script>toastr.info('@TempData[InformationMessage]')</script>
+}
+
+@if (TempData.ContainsKey(SuccesMessage))
+{
+    <script>toastr.success('@TempData[SuccesMessage]')</script>
+}
