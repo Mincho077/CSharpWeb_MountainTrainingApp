@@ -24,8 +24,8 @@ namespace MountainTrainingApp.Common
             public const double DurationMinValue = 0.0;
             public const double DurationMaxValue = Double.MaxValue;
 
-
-
+            public const int RopesClimbedMinValue = 0;
+            public const int RopesClimbedMaxValue =int.MaxValue;
         }
 
         public static class TrainingPeriodConstants
@@ -49,13 +49,6 @@ namespace MountainTrainingApp.Common
 
             public const int AverageHeartRateMinLength = 2;
             public const int AverageHeartRateMaxLength = 3;
-        }
-
-        public static class StrengthExerciseConstants
-        {
-            public const int NameMinLength = 5;
-            public const int NameMaxLength = 50;
-
         }
 
         public static class StrengthWorkoutConstats
