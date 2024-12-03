@@ -1,9 +1,10 @@
 namespace MountainTrainingApp.Web
 {
     using Microsoft.EntityFrameworkCore;
-    using MountainTrainingApp.Data;
-    using MountainTrainingApp.Data.Models;
-
+    using Data;
+    using Data.Models;
+    using Services.Data.Interfaces;
+    using static Web.Infrastructure.Extensions.WebApplicationBuilderExtensions;
     public class Program
     {
         public static void Main(string[] args)
@@ -31,6 +32,8 @@ namespace MountainTrainingApp.Web
                    builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
             })
                 .AddEntityFrameworkStores<MountainTrainigAppDbContext>();
+
+            builder.Services.AddApplicationServices(typeof(IAerobicWorkoutService));
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
