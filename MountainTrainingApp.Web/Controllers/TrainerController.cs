@@ -25,7 +25,7 @@
 
             if (isTrainer)
             {
-                TempData[ErrorMesage] = "Нали се регистрира ве,кретен!";
+                TempData[ErrorMesage] = "You are already a trainer!";
                 return RedirectToAction("Index", "Home");
             }
 
@@ -42,7 +42,7 @@
 
             if (isTrainer)
             {
-                TempData[ErrorMesage] = "Нали се регистрира ве,кретен!";
+                TempData[ErrorMesage] = "You are already a trainer!";
                 return RedirectToAction("Index", "Home");
             }
 
@@ -50,7 +50,7 @@
                 .TarnerExistNameIdAsync(model.Name);
             if (isNameTaken) 
             {
-                ModelState.AddModelError(nameof(model.Name), "Мноо си прост ве пич,има вече такова име!");
+                ModelState.AddModelError(nameof(model.Name), "Trainer with the provided name already exist!");
                 return RedirectToAction("Index", "Home");
             }
 
