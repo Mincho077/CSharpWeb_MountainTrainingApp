@@ -12,7 +12,7 @@ using MountainTrainingApp.Data;
 namespace MountainTrainingApp.Data.Migrations
 {
     [DbContext(typeof(MountainTrainigAppDbContext))]
-    [Migration("20241203074208_Initial")]
+    [Migration("20241204072919_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -529,10 +529,10 @@ namespace MountainTrainingApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("IMFGALicenseNumber")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -557,8 +557,8 @@ namespace MountainTrainingApp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
