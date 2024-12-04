@@ -19,7 +19,7 @@
             Trainer trainer=new Trainer() 
             { 
                 Id=Guid.NewGuid(),
-                Name=model.Name,
+                IMFGALicenseNumber=model.IMFGALicenseNumber,
             };
 
             await context.Trainers.AddAsync(trainer);
@@ -68,10 +68,10 @@
                 .AnyAsync(t => t.UserId.ToString() == userId);
         }
 
-        public async Task<bool> TarnerExistNameIdAsync(string name)
+        public async Task<bool> TarnerExisByIMFGALicenseNumberIdAsync(string IMFGALicenseNumber)
         {
             return await context.Trainers
-                .AnyAsync(t=>t.Name==name);
+                .AnyAsync(t=>t.IMFGALicenseNumber == IMFGALicenseNumber);
         }
     }
 }

@@ -46,11 +46,11 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            bool isNameTaken=await trainerService
-                .TarnerExistNameIdAsync(model.Name);
-            if (isNameTaken) 
+            bool isLicenseTaken=await trainerService
+                .TarnerExisByIMFGALicenseNumberIdAsync(model.IMFGALicenseNumber);
+            if (isLicenseTaken) 
             {
-                ModelState.AddModelError(nameof(model.Name), "Trainer with the provided name already exist!");
+                ModelState.AddModelError(nameof(model.IMFGALicenseNumber), "Trainer with the provided name already exist!");
                 return RedirectToAction("Index", "Home");
             }
 

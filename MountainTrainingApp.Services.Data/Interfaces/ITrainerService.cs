@@ -8,7 +8,7 @@ namespace MountainTrainingApp.Services.Data.Interfaces
 
         Task<bool> TainerExistByUserIdAsync(string userId);
 
-        Task<bool> TarnerExistNameIdAsync(string phoneNumber);
+        Task<bool> TarnerExisByIMFGALicenseNumberIdAsync(string IMFGALicenseNumber);
         Task<bool> HasStrengthWorkoutsByUserIdAsync(string userId);
         Task<bool> HasAerobicWorkoutsByUserIdAsync(string userId);
         Task<bool> HasClimbingsByUserIdAsync(string userId);
