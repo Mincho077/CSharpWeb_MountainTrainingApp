@@ -25,6 +25,43 @@
             await context.Trainers.AddAsync(trainer);
             await context.SaveChangesAsync();
         }
+
+        public async Task<bool> HasAerobicWorkoutsByUserIdAsync(string userId)
+        {
+            ApplicationUser? user = await context.Users
+               .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+            return user.AerobicWorkouts.Any();
+        }
+
+        public async Task<bool> HasClimbingsByUserIdAsync(string userId)
+        {
+            ApplicationUser? user = await context.Users
+              .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+            return user.Climbings.Any();
+        }
+
+        public async Task<bool> HasStrengthWorkoutsByUserIdAsync(string userId)
+        {
+            ApplicationUser? user = await context.Users
+              .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+            return user.StrengthWorkouts.Any();
+        }
+
         public async Task<bool> TainerExistByUserIdAsync(string userId)
         {
             return await context.Trainers
