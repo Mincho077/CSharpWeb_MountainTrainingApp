@@ -1,5 +1,6 @@
 ﻿namespace MountainTrainingApp.Data.Models
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using static Common.EntityValidationConstants.TrainerConstats;
@@ -17,8 +18,8 @@
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(NameMaxLength)]
-        public string Name { get; set; } = null!;
+        [MaxLength(IMFGALicenseNumberMaxLength)]
+        public string IMFGALicenseNumber { get; set; } = null!;
 
         [Required]
         public Guid UserId { get; set; }
