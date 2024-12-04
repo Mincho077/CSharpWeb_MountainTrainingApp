@@ -32,7 +32,7 @@ namespace MountainTrainingApp.Common
         {
 
             public const int NameMinLength = 5;
-            public const int NameMaxLength = 20;
+            public const int NameMaxLength = 50;
 
         }
 
@@ -71,8 +71,10 @@ namespace MountainTrainingApp.Common
 
         public static class TrainerConstats
         {
-            public const int NameMinLength = 5;
-            public const int NameMaxLength = 50;
+
+            public const int IMFGALicenseNumberMinLength = 10;
+            public const int IMFGALicenseNumberMaxLength = 10;
+         
         }
 
     }
