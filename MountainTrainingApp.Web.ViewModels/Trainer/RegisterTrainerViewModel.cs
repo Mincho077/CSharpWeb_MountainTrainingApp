@@ -5,9 +5,9 @@
     public class RegisterTrainerViewModel
     {
         [Required]
-        [MinLength(NameMinLength)]
-        [MaxLength(NameMaxLength)]
-        [Display(Name = "Trainer name")]
-        public string Name { get; set; } = null!;
+        [MinLength(IMFGALicenseNumberMinLength)]
+        [MaxLength(IMFGALicenseNumberMaxLength)]
+        [Display(Name = "Trainer license")]
+        public string IMFGALicenseNumber { get; set; } = null!;
     }
 }
