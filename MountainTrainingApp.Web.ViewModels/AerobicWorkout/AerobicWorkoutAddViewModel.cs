@@ -4,6 +4,7 @@
     using static Common.EntityValidationConstants.AerobicWorkoutConstants;
     using MountainTrainingApp.Web.ViewModels.AerobicActivity;
     using MountainTrainingApp.Web.ViewModels.TrainingPeriod;
+    using MountainTrainingApp.Web.ViewModels.DayOfWeek;
 
     public class AerobicWorkoutAddViewModel
     {
@@ -11,9 +12,12 @@
         {
             AerobicActivities = new HashSet<AerobicActivityViewMode>();
             TrainingPeriods = new HashSet<TrainingPeriodViewModel>();
+            DaysOfWeek = new HashSet<DayOfWeekViewModel>();
         }
         [Required]
-        public string DayOfWeek { get; set; } = null!;
+        public int DayOfWeekId { get; set; }
+
+        public IEnumerable<DayOfWeekViewModel> DaysOfWeek { get; set; }
 
         [Required]
         public string DateAndTime { get; set; } = null!;

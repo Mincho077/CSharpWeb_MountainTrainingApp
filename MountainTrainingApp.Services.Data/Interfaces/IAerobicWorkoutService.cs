@@ -2,6 +2,8 @@
 {
     public interface IAerobicWorkoutService
     {
+        //Task<IEnumerable<>> AllMedicinesAsync();
 
+       // Task CreateMedicineAsync(MedicineAddViewModel model, string pharmacistId);
     }
 }

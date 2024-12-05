@@ -236,7 +236,7 @@ namespace MountainTrainingApp.Data.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DayOfWeek")
+                    b.Property<int>("DayOfWeekId")
                         .HasColumnType("int");
 
                     b.Property<double>("Duration")
@@ -259,6 +259,8 @@ namespace MountainTrainingApp.Data.Migrations
                     b.HasIndex("AerobicActivityId");
 
                     b.HasIndex("AthletId");
+
+                    b.HasIndex("DayOfWeekId");
 
                     b.HasIndex("TrainerId");
 
@@ -348,7 +350,7 @@ namespace MountainTrainingApp.Data.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DayOfWeek")
+                    b.Property<int>("DayOfWeekId")
                         .HasColumnType("int");
 
                     b.Property<double>("Duration")
@@ -371,6 +373,8 @@ namespace MountainTrainingApp.Data.Migrations
                     b.HasIndex("AthletId");
 
                     b.HasIndex("ClimbingActivityId");
+
+                    b.HasIndex("DayOfWeekId");
 
                     b.HasIndex("TrainerId");
 
@@ -432,6 +436,61 @@ namespace MountainTrainingApp.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MountainTrainingApp.Data.Models.DayOfWeek", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DaysOfWeek");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Monday"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Tuesday"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Wednesday"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Thursday"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Friday"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Saturday"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Sunday"
+                        });
+                });
+
             modelBuilder.Entity("MountainTrainingApp.Data.Models.StrengthWorkout", b =>
                 {
                     b.Property<Guid>("Id")
@@ -450,7 +509,7 @@ namespace MountainTrainingApp.Data.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DayOfWeek")
+                    b.Property<int>("DayOfWeekId")
                         .HasColumnType("int");
 
                     b.Property<double>("Duration")
@@ -475,6 +534,8 @@ namespace MountainTrainingApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AthletId");
+
+                    b.HasIndex("DayOfWeekId");
 
                     b.HasIndex("StrengthWorkoutTypeId");
 
@@ -647,6 +708,12 @@ namespace MountainTrainingApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MountainTrainingApp.Data.Models.DayOfWeek", "DayOfWeek")
+                        .WithMany("AerobicWorkouts")
+                        .HasForeignKey("DayOfWeekId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MountainTrainingApp.Data.Models.Trainer", "Trainer")
                         .WithMany("AerobicWorkouts")
                         .HasForeignKey("TrainerId")
@@ -661,6 +728,8 @@ namespace MountainTrainingApp.Data.Migrations
                     b.Navigation("AerobicActivity");
 
                     b.Navigation("Athlet");
+
+                    b.Navigation("DayOfWeek");
 
                     b.Navigation("Trainer");
 
@@ -681,6 +750,12 @@ namespace MountainTrainingApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("MountainTrainingApp.Data.Models.DayOfWeek", "DayOfWeek")
+                        .WithMany("Climbings")
+                        .HasForeignKey("DayOfWeekId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MountainTrainingApp.Data.Models.Trainer", "Trainer")
                         .WithMany("Climbings")
                         .HasForeignKey("TrainerId")
@@ -696,6 +771,8 @@ namespace MountainTrainingApp.Data.Migrations
 
                     b.Navigation("ClimbingActivity");
 
+                    b.Navigation("DayOfWeek");
+
                     b.Navigation("Trainer");
 
                     b.Navigation("TrainingPeriod");
@@ -706,6 +783,12 @@ namespace MountainTrainingApp.Data.Migrations
                     b.HasOne("MountainTrainingApp.Data.Models.ApplicationUser", "Athlet")
                         .WithMany("StrengthWorkouts")
                         .HasForeignKey("AthletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MountainTrainingApp.Data.Models.DayOfWeek", "DayOfWeek")
+                        .WithMany("StrengthWorkouts")
+                        .HasForeignKey("DayOfWeekId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -727,6 +810,8 @@ namespace MountainTrainingApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Athlet");
+
+                    b.Navigation("DayOfWeek");
 
                     b.Navigation("StrengthWorkoutType");
 
@@ -763,6 +848,15 @@ namespace MountainTrainingApp.Data.Migrations
             modelBuilder.Entity("MountainTrainingApp.Data.Models.ClimbingActivity", b =>
                 {
                     b.Navigation("Climbings");
+                });
+
+            modelBuilder.Entity("MountainTrainingApp.Data.Models.DayOfWeek", b =>
+                {
+                    b.Navigation("AerobicWorkouts");
+
+                    b.Navigation("Climbings");
+
+                    b.Navigation("StrengthWorkouts");
                 });
 
             modelBuilder.Entity("MountainTrainingApp.Data.Models.StrengthWorkoutType", b =>

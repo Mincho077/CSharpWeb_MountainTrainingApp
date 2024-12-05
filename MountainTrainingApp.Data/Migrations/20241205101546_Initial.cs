@@ -81,6 +81,19 @@ namespace MountainTrainingApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DaysOfWeek",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DaysOfWeek", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StrengthWorkoutTypes",
                 columns: table => new
                 {
@@ -237,7 +250,7 @@ namespace MountainTrainingApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
+                    DayOfWeekId = table.Column<int>(type: "int", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<double>(type: "float", nullable: false),
                     ElevationGain = table.Column<int>(type: "int", nullable: false),
@@ -264,6 +277,12 @@ namespace MountainTrainingApp.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_AerobicWorkouts_DaysOfWeek_DayOfWeekId",
+                        column: x => x.DayOfWeekId,
+                        principalTable: "DaysOfWeek",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_AerobicWorkouts_Trainers_TrainerId",
                         column: x => x.TrainerId,
                         principalTable: "Trainers",
@@ -282,7 +301,7 @@ namespace MountainTrainingApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
+                    DayOfWeekId = table.Column<int>(type: "int", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<double>(type: "float", nullable: false),
                     RopesClimbed = table.Column<int>(type: "int", nullable: false),
@@ -308,6 +327,12 @@ namespace MountainTrainingApp.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_Climbings_DaysOfWeek_DayOfWeekId",
+                        column: x => x.DayOfWeekId,
+                        principalTable: "DaysOfWeek",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Climbings_Trainers_TrainerId",
                         column: x => x.TrainerId,
                         principalTable: "Trainers",
@@ -326,7 +351,7 @@ namespace MountainTrainingApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
+                    DayOfWeekId = table.Column<int>(type: "int", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<double>(type: "float", nullable: false),
                     Repetitions = table.Column<int>(type: "int", maxLength: 2147483647, nullable: false),
@@ -345,6 +370,12 @@ namespace MountainTrainingApp.Data.Migrations
                         name: "FK_StrengthWorkouts_AspNetUsers_AthletId",
                         column: x => x.AthletId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StrengthWorkouts_DaysOfWeek_DayOfWeekId",
+                        column: x => x.DayOfWeekId,
+                        principalTable: "DaysOfWeek",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -393,6 +424,20 @@ namespace MountainTrainingApp.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "DaysOfWeek",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Monday" },
+                    { 2, "Tuesday" },
+                    { 3, "Wednesday" },
+                    { 4, "Thursday" },
+                    { 5, "Friday" },
+                    { 6, "Saturday" },
+                    { 7, "Sunday" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "StrengthWorkoutTypes",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -421,6 +466,11 @@ namespace MountainTrainingApp.Data.Migrations
                 name: "IX_AerobicWorkouts_AthletId",
                 table: "AerobicWorkouts",
                 column: "AthletId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AerobicWorkouts_DayOfWeekId",
+                table: "AerobicWorkouts",
+                column: "DayOfWeekId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AerobicWorkouts_TrainerId",
@@ -482,6 +532,11 @@ namespace MountainTrainingApp.Data.Migrations
                 column: "ClimbingActivityId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Climbings_DayOfWeekId",
+                table: "Climbings",
+                column: "DayOfWeekId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Climbings_TrainerId",
                 table: "Climbings",
                 column: "TrainerId");
@@ -495,6 +550,11 @@ namespace MountainTrainingApp.Data.Migrations
                 name: "IX_StrengthWorkouts_AthletId",
                 table: "StrengthWorkouts",
                 column: "AthletId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StrengthWorkouts_DayOfWeekId",
+                table: "StrengthWorkouts",
+                column: "DayOfWeekId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StrengthWorkouts_StrengthWorkoutTypeId",
@@ -552,6 +612,9 @@ namespace MountainTrainingApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ClimbingActivities");
+
+            migrationBuilder.DropTable(
+                name: "DaysOfWeek");
 
             migrationBuilder.DropTable(
                 name: "StrengthWorkoutTypes");

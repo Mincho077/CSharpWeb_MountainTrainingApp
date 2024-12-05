@@ -12,7 +12,11 @@
         public Guid Id { get; set; }
 
         [Required]
-        public DayOfWeek DayOfWeek { get; set; }
+        public int DayOfWeekId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(DayOfWeekId))]
+        public virtual DayOfWeek DayOfWeek { get; set; } = null!;
 
         [Required]
         public DateTime DateAndTime { get; set; }
