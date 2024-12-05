@@ -1,17 +1,34 @@
 ﻿namespace MountainTrainingApp.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using MountainTrainingApp.Data;
     using MountainTrainingApp.Services.Data.Interfaces;
     using MountainTrainingApp.Web.ViewModels.TrainingPeriod;
+
     public class TrainingPeriodService : ITrainingPeriodService
     {
-        public Task<IEnumerable<TrainingPeriodViewModel>> GetTrainingPeriodsAsync()
+        private readonly MountainTrainigAppDbContext context;
+        public TrainingPeriodService(MountainTrainigAppDbContext context)
         {
-            throw new NotImplementedException();
+           this.context = context;
+        }
+        public async Task<IEnumerable<TrainingPeriodViewModel>> GetTrainingPeriodsAsync()
+        {
+            return await context.TrainingPeriods
+               .AsNoTracking()
+               .AsNoTracking()
+               .Select(tp => new TrainingPeriodViewModel()
+               {
+                   Id = tp.Id,
+                   Name = tp.Name,
+               })
+               .ToArrayAsync();
         }
 
-        public Task<bool> TrainingPeriodExistByIdAsync(int id)
+        public async Task<bool> TrainingPeriodExistByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.TrainingPeriods
+                .AnyAsync(tp => tp.Id == id);
         }
     }
 }
