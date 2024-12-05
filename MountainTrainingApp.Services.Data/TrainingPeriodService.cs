@@ -9,7 +9,7 @@
             throw new NotImplementedException();
         }
 
-        public Task<bool> TrainingPeriodsExistByIdAsync(int id)
+        public Task<bool> TrainingPeriodExistByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
