@@ -26,6 +26,9 @@
         public double Duration { get; set; }
 
         [Required]
+        public double Distance { get; set; }
+
+        [Required]
         public int ElevationGain { get; set; }
 
         [Required]
