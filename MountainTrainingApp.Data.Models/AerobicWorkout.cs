@@ -29,6 +29,9 @@
         public double Distance { get; set; }
 
         [Required]
+        public double BurnedCalories { get; set; }
+
+        [Required]
         public int ElevationGain { get; set; }
 
         [Required]
