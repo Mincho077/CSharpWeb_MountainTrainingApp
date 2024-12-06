@@ -31,6 +31,10 @@
         public int ElevationGain { get; set; }
 
         [Required]
+        [Range(DistanceMinValue, DistanceMaxValue)]
+        public int Distance { get; set; }
+
+        [Required]
         [MinLength(AverageHeartRateMinLength)]
         [MaxLength(AverageHeartRateMaxLength)]
         public string AverageHeartRate { get; set; } = null!;
