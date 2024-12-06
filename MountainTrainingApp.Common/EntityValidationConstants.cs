@@ -58,6 +58,9 @@ namespace MountainTrainingApp.Common
             public const int ElevationGainMinValue = 0;
             public const int ElevationGainMaxValue = int.MaxValue;
 
+            public const int BurnedCaloriesMinValue = 0;
+            public const int BurnedCaloriesMaxValue = int.MaxValue;
+
             public const int AverageHeartRateMinLength = 2;
             public const int AverageHeartRateMaxLength = 3;
         }
