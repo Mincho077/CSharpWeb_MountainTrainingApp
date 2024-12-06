@@ -12,7 +12,7 @@ using MountainTrainingApp.Data;
 namespace MountainTrainingApp.Data.Migrations
 {
     [DbContext(typeof(MountainTrainigAppDbContext))]
-    [Migration("20241206083242_Initial")]
+    [Migration("20241206092557_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -186,6 +186,12 @@ namespace MountainTrainingApp.Data.Migrations
                             Id = 1,
                             IsDeleted = false,
                             Name = "Trail running"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            Name = "Hiking"
                         },
                         new
                         {

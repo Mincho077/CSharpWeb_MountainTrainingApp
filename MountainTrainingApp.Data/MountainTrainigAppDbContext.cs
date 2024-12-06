@@ -26,6 +26,7 @@
         public DbSet<Climbing> Climbings { get; set; } = null!;
 
         public DbSet<TrainingPeriod> TrainingPeriods { get; set; } = null!;
+
         public DbSet<DayOfWeek> DaysOfWeek { get; set; } = null!;
 
         public DbSet<Trainer> Trainers { get; set; } = null!;

@@ -406,6 +406,7 @@ namespace MountainTrainingApp.Data.Migrations
                 values: new object[,]
                 {
                     { 1, false, "Trail running" },
+                    { 2, false, "Hiking" },
                     { 3, false, "Mountain biking" },
                     { 4, false, "Road biking" },
                     { 5, false, "Road running" },

@@ -186,6 +186,12 @@ namespace MountainTrainingApp.Data.Migrations
                         },
                         new
                         {
+                            Id = 2,
+                            IsDeleted = false,
+                            Name = "Hiking"
+                        },
+                        new
+                        {
                             Id = 3,
                             IsDeleted = false,
                             Name = "Mountain biking"
