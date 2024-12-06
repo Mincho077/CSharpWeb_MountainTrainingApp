@@ -35,6 +35,10 @@
         public int Distance { get; set; }
 
         [Required]
+        [Range(BurnedCaloriesMinValue,BurnedCaloriesMaxValue)]
+        public int BurnedCalories { get; set; }
+
+        [Required]
         [MinLength(AverageHeartRateMinLength)]
         [MaxLength(AverageHeartRateMaxLength)]
         public string AverageHeartRate { get; set; } = null!;
@@ -49,7 +53,5 @@
 
         public IEnumerable<TrainingPeriodViewModel> TrainingPeriods { get; set; }
 
-        [Required]
-        public bool IsDeleted { get; set; }
     }
 }
