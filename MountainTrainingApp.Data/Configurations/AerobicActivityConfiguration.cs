@@ -29,6 +29,8 @@
                 Name = "Hiking",
             };
 
+            aerobicActivities.Add(aerobicActivity);
+
             aerobicActivity = new AerobicActivity()
             {
                 Id = 3,
