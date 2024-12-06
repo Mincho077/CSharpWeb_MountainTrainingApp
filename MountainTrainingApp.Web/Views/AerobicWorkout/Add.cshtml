@@ -31,7 +31,7 @@
                 <div class="col-sm-12 mb-4">
                     <label asp-for="@Model.DaysOfWeek" class="form-label-add-edit">Select Day</label>
                     <select asp-for="@Model.DayOfWeekId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.DaysOfWeek, "Id", "Name"))">
-                        <option value="">Select MedicineTypes...</option>
+                        <option value="">Select Day...</option>
                     </select>
                     <span asp-validation-for="@Model.DayOfWeekId" class="text-danger"></span>
                 </div>
@@ -69,9 +69,15 @@
                     <span asp-validation-for="@Model.AverageHeartRate" class="text-danger"></span>
                 </div>
 
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.BurnedCalories" class="form-label-add-edit">Distance</label>
+                    <input asp-for="@Model.BurnedCalories" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.BurnedCalories" class="text-danger"></span>
+                </div>
+
             </div>
             <div class="mb-2">
-                <input class="btn btn-warning btn-dark-text w-100 py-2 fw-bold rounded" type="submit" value="Save" />
+                <input class="btn btn-primary btn-dark-text w-100 py-2 fw-bold rounded" type="submit" value="Save" />
             </div>
         </form>
     </div>
