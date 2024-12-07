@@ -13,16 +13,21 @@
         {
             this.context = context;
         }
-        public async Task  CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string trainerId)
+        public async Task  CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date)
         {
             AerobicWorkout workout = new AerobicWorkout()
             {
                 Duration = model.Duration,
-                ElevationGain = model.ElevationGain,
+                ElevationGain = model.ElevationGain,                
                 Distance = model.Distance,
-                TrainerId = Guid.Parse(trainerId),
+                AthletId=Guid.Parse(athletId),
+                DateAndTime = date,
                 AverageHeartRate = model.AverageHeartRate,
                 BurnedCalories=model.BurnedCalories,
+                AddedWeight=model.AddedWeight,
+                AerobicActivityId=model.AerobicActivityId,
+                TrainingPeriodId=model.TrainingPeriodId,
+                DayOfWeekId=model.DayOfWeekId,
             };
 
             await context.AerobicWorkouts.AddAsync(workout);

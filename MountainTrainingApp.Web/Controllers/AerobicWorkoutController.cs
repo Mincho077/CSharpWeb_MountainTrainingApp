@@ -50,24 +50,7 @@
         [HttpPost]
         public async Task<IActionResult> Add(AerobicWorkoutAddViewModel model)
         {
-            bool isDateValid = DateTime.TryParseExact(model.DateAndTime,DateFormat,CultureInfo.InvariantCulture
-                ,DateTimeStyles.None,out DateTime dateAndTime);
-
-            if (!isDateValid)
-            {
-               
-                model.AerobicActivities =
-                    await aerobicActivityService.AllAerobicActivitiesAsync();
-
-                model.TrainingPeriods =
-                    await trainingPeriodService.GetTrainingPeriodsAsync();
-
-                model.DaysOfWeek =
-                    await dayOfWeekService.DaysOfWeekAsync();
-
-                return View(model);
-            }
-
+           
             bool aerobicActivitiesExist = await
                 aerobicActivityService.AerobicActivityExistByIdAsync(model.AerobicActivityId);
 
@@ -107,10 +90,28 @@
                 return View(model);
             }
 
+            bool isDateValid = DateTime.TryParseExact(model.DateAndTime, DateFormat, CultureInfo.InvariantCulture
+               , DateTimeStyles.None, out DateTime dateAndTime);
+
+            if (!isDateValid)
+            {
+
+                model.AerobicActivities =
+                    await aerobicActivityService.AllAerobicActivitiesAsync();
+
+                model.TrainingPeriods =
+                    await trainingPeriodService.GetTrainingPeriodsAsync();
+
+                model.DaysOfWeek =
+                    await dayOfWeekService.DaysOfWeekAsync();
+
+                return View(model);
+            }
+
             try
             {
                 string athlettId = User.GetUserId();
-                await aerobicWorkoutService.CreateAerobicWorkoutAsync(model,athlettId);
+                await aerobicWorkoutService.CreateAerobicWorkoutAsync(model,athlettId,dateAndTime);
 
             }
             catch (Exception _)

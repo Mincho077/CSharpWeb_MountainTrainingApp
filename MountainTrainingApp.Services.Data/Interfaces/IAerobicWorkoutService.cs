@@ -6,6 +6,6 @@ namespace MountainTrainingApp.Services.Data.Interfaces
     {
         //Task<IEnumerable<IndexViewModel>> AllMedicinesAsync();
 
-        Task CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string trainerId);
+        Task CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string trainerId,DateTime date);
     }
 }
