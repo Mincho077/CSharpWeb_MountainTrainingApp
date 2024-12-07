@@ -23,10 +23,10 @@
            
             return await context.AerobicActivities
             .AsNoTracking()
-            .Select(tp => new AerobicActivityViewMode()
+            .Select(aa => new AerobicActivityViewMode()
             {
-                Id = tp.Id,
-                Name = tp.Name,
+                Id = aa.Id,
+                Name = aa.Name,
             })
             .ToArrayAsync();
         }

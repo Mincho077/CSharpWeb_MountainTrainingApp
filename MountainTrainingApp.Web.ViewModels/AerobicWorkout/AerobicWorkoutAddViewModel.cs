@@ -2,9 +2,9 @@
 {
     using System.ComponentModel.DataAnnotations;
     using static Common.EntityValidationConstants.AerobicWorkoutConstants;
-    using MountainTrainingApp.Web.ViewModels.AerobicActivity;
-    using MountainTrainingApp.Web.ViewModels.TrainingPeriod;
-    using MountainTrainingApp.Web.ViewModels.DayOfWeek;
+    using Web.ViewModels.AerobicActivity;
+    using Web.ViewModels.TrainingPeriod;
+    using Web.ViewModels.DayOfWeek;
 
     public class AerobicWorkoutAddViewModel
     {
@@ -32,7 +32,7 @@
 
         [Required]
         [Range(DistanceMinValue, DistanceMaxValue)]
-        public int Distance { get; set; }
+        public double Distance { get; set; }
 
         [Required]
         [Range(BurnedCaloriesMinValue,BurnedCaloriesMaxValue)]
