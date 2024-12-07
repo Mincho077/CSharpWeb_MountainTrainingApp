@@ -39,6 +39,10 @@
         public int BurnedCalories { get; set; }
 
         [Required]
+        [Range(AddedWeightMinValue,AddedWeightMaxValue)]
+        public double AddedWeight { get; set; }
+
+        [Required]
         [MinLength(AverageHeartRateMinLength)]
         [MaxLength(AverageHeartRateMaxLength)]
         public string AverageHeartRate { get; set; } = null!;
