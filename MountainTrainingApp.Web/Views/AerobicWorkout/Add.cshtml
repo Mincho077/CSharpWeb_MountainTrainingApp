@@ -1,7 +1,6 @@
 ﻿ @model AerobicWorkoutAddViewModel
 @{
     ViewData["Title"] = "Add Aerobic Workout";
-    var today = DateTime.Now.ToString("dd-MM-yyyy");
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
@@ -26,7 +25,7 @@
                     <select asp-for="@Model.TrainingPeriodId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.TrainingPeriods, "Id", "Name"))">
                         <option value="">Select Period...</option>
                     </select>
-                    <span asp-validation-for="@Model.AerobicActivityId" class="text-danger"></span>
+                    <span asp-validation-for="@Model.TrainingPeriodId" class="text-danger"></span>
                 </div>
                 <div class="col-sm-12 mb-4">
                     <label asp-for="@Model.DaysOfWeek" class="form-label-add-edit">Select Day</label>
@@ -61,6 +60,12 @@
                     <label asp-for="@Model.Distance" class="form-label-add-edit">Distance(Kilometers)</label>
                     <input asp-for="@Model.Distance" class="form-control" aria-required="true" />
                     <span asp-validation-for="@Model.Distance" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.AddedWeight" class="form-label-add-edit">Weight Added</label>
+                    <input asp-for="@Model.AddedWeight" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.AddedWeight" class="text-danger"></span>
                 </div>
 
                 <div class="col-sm-12 mb-2">
