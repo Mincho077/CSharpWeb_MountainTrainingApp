@@ -32,6 +32,9 @@
         public int BurnedCalories { get; set; }
 
         [Required]
+        public double AddedWeight { get; set; }
+
+        [Required]
         public int ElevationGain { get; set; }
 
         [Required]

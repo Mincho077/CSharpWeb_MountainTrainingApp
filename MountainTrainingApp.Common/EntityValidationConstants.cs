@@ -55,6 +55,9 @@ namespace MountainTrainingApp.Common
             public const double DistanceMinValue = 0.0;
             public const double DistanceMaxValue = Double.MaxValue;
 
+            public const double AddedWeightMinValue = 0.0;
+            public const double AddedWeightMaxValue = Double.MaxValue;
+
             public const int ElevationGainMinValue = 0;
             public const int ElevationGainMaxValue = int.MaxValue;
 
