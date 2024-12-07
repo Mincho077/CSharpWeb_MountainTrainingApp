@@ -1,10 +1,13 @@
 ﻿namespace MountainTrainingApp.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
     using MountainTrainingApp.Data;
     using MountainTrainingApp.Data.Models;
     using MountainTrainingApp.Services.Data.Interfaces;
     using MountainTrainingApp.Web.ViewModels.AerobicWorkout;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using static Common.EntityValidationConstants.AerobicWorkoutConstants;
 
     public class AerobicWorkoutService : IAerobicWorkoutService
     {
@@ -13,6 +16,22 @@
         {
             this.context = context;
         }
+
+        public async Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllAerobicWorkoutsAsync()
+        {
+            return await context.AerobicWorkouts
+                .OrderByDescending(aw => aw.DateAndTime)
+                .Select(aw => new AerobicWorkoutIndexViewModel
+                {
+                    AerobicActivity=aw.AerobicActivity.Name,
+                    DayOfWeek=aw.DayOfWeek.Name,
+                    DateAndTime=aw.DateAndTime.ToString(DateFormat),
+                    Duration=aw.Duration.ToString(),
+                    Distance=aw.Distance.ToString()
+                })
+                .ToArrayAsync();
+        }
+
         public async Task  CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date)
         {
             AerobicWorkout workout = new AerobicWorkout()

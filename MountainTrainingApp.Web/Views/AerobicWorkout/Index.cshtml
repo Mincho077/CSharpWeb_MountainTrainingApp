@@ -20,6 +20,7 @@
                 <td>@aw.DayOfWeek</td>
                 <td>@aw.DateAndTime</td>
                 <td>@aw.Duration minutes</td>
+                <td>@aw.Distance</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@aw.Id" class="btn btn-info">Details</a>
                     <a asp-action="AddToProgram" asp-route-movieId="@aw.Id" class="btn btn-primary">+Program</a>
@@ -37,4 +38,4 @@
     </tbody>
 </table>
 
-<a asp-action="Create" class="btn btn-primary">Add New Movie</a>
+<a asp-controller="AerobicWorkout" asp-action="Add" class="btn btn-primary">Add Aerobic</a>

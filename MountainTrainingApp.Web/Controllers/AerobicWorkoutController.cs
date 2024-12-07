@@ -28,7 +28,8 @@
         }
         public async Task<IActionResult> Index()
         {
-            return View();
+           var model= await aerobicWorkoutService.AllAerobicWorkoutsAsync();
+            return View(model);
         }
 
         [HttpGet]
