@@ -20,6 +20,7 @@
                 Duration = model.Duration,
                 ElevationGain = model.ElevationGain,
                 Distance = model.Distance,
+                TrainerId = Guid.Parse(trainerId),
                 AverageHeartRate = model.AverageHeartRate,
                 BurnedCalories=model.BurnedCalories,
             };

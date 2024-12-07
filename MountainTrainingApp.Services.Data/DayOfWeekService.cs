@@ -13,7 +13,13 @@
         {
             this.context = context;
         }
-       
+
+        public async Task<bool> DayOfWeekExistByIdAsync(int id)
+        {
+            return await context.DaysOfWeek
+           .AnyAsync(tp => tp.Id == id);
+        }
+
         public async Task<IEnumerable<DayOfWeekViewModel>> DaysOfWeekAsync()
         {
             return await context.DaysOfWeek
