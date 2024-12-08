@@ -26,7 +26,6 @@
         public double Duration { get; set; }
 
         [Required]
-        [MaxLength(RepetitionsMaxValue)]
         public int Repetitions { get; set; }
 
         [Required]
