@@ -70,7 +70,7 @@
             bool dayOdWeekExist=await
                 dayOfWeekService.DayOfWeekExistByIdAsync(model.DayOfWeekId);
 
-            if (!trainningPeriodExist)
+            if (!dayOdWeekExist)
             {
                 ModelState.AddModelError(nameof(model.DayOfWeekId), "Invalid day id!");
             }
