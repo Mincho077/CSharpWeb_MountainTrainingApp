@@ -46,8 +46,6 @@ namespace MountainTrainingApp.Common
 
         public static class AerobicWorkoutConstants
         {
-            public const string DateFormat = "dd/MM/yyyy HH:mm";
-
 
             public const double DurationMinValue = 0.0;
             public const double DurationMaxValue = Double.MaxValue;
@@ -66,6 +64,7 @@ namespace MountainTrainingApp.Common
 
             public const int AverageHeartRateMinLength = 2;
             public const int AverageHeartRateMaxLength = 3;
+
         }
 
         public static class StrengthWorkoutConstats
@@ -78,6 +77,7 @@ namespace MountainTrainingApp.Common
 
             public const int RepetitionsMinValue = 0;
             public const int RepetitionsMaxValue = int.MaxValue;
+           
         }
 
         public static class StrengthWorkoutTypeConstants

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace MountainTrainingApp.Web.ViewModels.AerobicWorkout
+﻿namespace MountainTrainingApp.Web.ViewModels.AerobicWorkout
 {
     public class AerobicWorkoutIndexViewModel
     {
@@ -27,6 +24,6 @@ namespace MountainTrainingApp.Web.ViewModels.AerobicWorkout
 
         public string TrainingPeriod { get; set; } = null!;
 
-
+        public string AthetName { get; set; } = null!;
     }
 }

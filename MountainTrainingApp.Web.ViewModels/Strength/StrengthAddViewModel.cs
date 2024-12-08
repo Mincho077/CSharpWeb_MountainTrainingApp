@@ -10,17 +10,17 @@
     {
         public StrengthAddViewModel()
         {
-            daysOfWeek = new HashSet<DayOfWeekViewModel>();
+            DaysOfWeek = new HashSet<DayOfWeekViewModel>();
             StrengthWorkoutTypes=new HashSet<StrengthWorkoutTypeViewModel>();
             TrainingPeriods=new HashSet<TrainingPeriodViewModel>();
         }
         [Required]
         public int DayOfWeekId { get; set; }
 
-        public IEnumerable<DayOfWeekViewModel> daysOfWeek { get; set; }
+        public IEnumerable<DayOfWeekViewModel> DaysOfWeek { get; set; }
 
         [Required]
-        public DateTime DateAndTime { get; set; }
+        public string DateAndTime { get; set; } = null!;
 
         [Required]
         [Range(DurationMinValue, DurationMaxValue)]

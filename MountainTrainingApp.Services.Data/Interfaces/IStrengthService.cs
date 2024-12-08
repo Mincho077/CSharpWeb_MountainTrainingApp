@@ -1,7 +1,7 @@
 ﻿namespace MountainTrainingApp.Services.Data.Interfaces
 {
     using Web.ViewModels.Strength;
-    public interface IStrength
+    public interface IStrengthService
     {
         Task<IEnumerable<StrengthIndexViewModel>> AllStrengthWorkoutsAsync();
 

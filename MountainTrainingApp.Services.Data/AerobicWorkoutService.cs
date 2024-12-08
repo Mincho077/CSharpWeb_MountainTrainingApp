@@ -7,7 +7,7 @@
     using MountainTrainingApp.Web.ViewModels.AerobicWorkout;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using static Common.EntityValidationConstants.AerobicWorkoutConstants;
+    using static Common.GeneralApplicationConstats;
 
     public class AerobicWorkoutService : IAerobicWorkoutService
     {
@@ -20,14 +20,17 @@
         public async Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllAerobicWorkoutsAsync()
         {
             return await context.AerobicWorkouts
+                .Where(aw=>aw.IsDeleted==false)
                 .OrderByDescending(aw => aw.DateAndTime)
                 .Select(aw => new AerobicWorkoutIndexViewModel
                 {
+                    Id=aw.Id.ToString(),
                     AerobicActivity=aw.AerobicActivity.Name,
                     DayOfWeek=aw.DayOfWeek.Name,
                     DateAndTime=aw.DateAndTime.ToString(DateFormat),
                     Duration=aw.Duration.ToString(),
-                    Distance=aw.Distance.ToString()
+                    Distance=aw.Distance.ToString(),
+                    AthetName=aw.Athlet.UserName??string.Empty
                 })
                 .ToArrayAsync();
         }

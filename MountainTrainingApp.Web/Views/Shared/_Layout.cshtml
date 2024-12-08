@@ -46,6 +46,24 @@
                            @*  <li class="nav-item">
                                 <a class="nav-link" asp-controller="Product" asp-action="Cart">Cart</a>
                             </li> *@
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Strength</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-controller="Strength" asp-action="Index">Strength</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="Strength" asp-action="Add">Add Strength</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Climbing</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-controller="Climbing" asp-action="Index">Climbing</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="Climbing" asp-action="Add">Add Climbing</a>
+                                </div>
+                            </li>
                         }
                         else
                         {

@@ -2,12 +2,11 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Globalization;
     using Web.ViewModels.AerobicWorkout;
     using Services.Data.Interfaces;
-    using static Common.EntityValidationConstants.AerobicWorkoutConstants;
-    using System.Globalization;
-    using MountainTrainingApp.Services.Data;
-    using MountainTrainingApp.Web.Infrastructure.Extensions;
+    using static Common.GeneralApplicationConstats;
+    using Web.Infrastructure.Extensions;
 
     [Authorize]
     public class AerobicWorkoutController : Controller

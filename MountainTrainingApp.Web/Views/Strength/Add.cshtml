@@ -1,0 +1,78 @@
+﻿ @model StrengthAddViewModel
+@{
+    ViewData["Title"] = "Add Strength Workout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
+    <h2>@ViewData["Title"]</h2>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div class="row">
+
+                <div class="col-sm-12 mb-4">
+                    <label asp-for="@Model.StrengthWorkoutTypes" class="form-label-add-edit">Select Strength Types</label>
+                    <select asp-for="@Model.StrengthWorkoutTypeId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.StrengthWorkoutTypes, "Id", "Name"))">
+                        <option value="">Select Types...</option>
+                    </select>
+                    <span asp-validation-for="@Model.StrengthWorkoutTypeId" class="text-danger"></span>
+                </div>
+                 <div class="col-sm-12 mb-4">
+                    <label asp-for="@Model.TrainingPeriods" class="form-label-add-edit">Select Period</label>
+                    <select asp-for="@Model.TrainingPeriodId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.TrainingPeriods, "Id", "Name"))">
+                        <option value="">Select Period...</option>
+                    </select>
+                    <span asp-validation-for="@Model.TrainingPeriodId" class="text-danger"></span>
+                </div>
+                <div class="col-sm-12 mb-4">
+                    <label asp-for="@Model.DaysOfWeek" class="form-label-add-edit">Select Day</label>
+                    <select asp-for="@Model.DayOfWeekId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.DaysOfWeek, "Id", "Name"))">
+                        <option value="">Select Day...</option>
+                    </select>
+                    <span asp-validation-for="@Model.DayOfWeekId" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.DateAndTime" class="form-label-add-edit">Date</label>
+                    <input asp-for="@Model.DateAndTime" class="form-control" aria-required="true" placeholder="dd/MM/yyyy HH:mm"/>
+                    <span asp-validation-for="@Model.DateAndTime" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.Duration" class="form-label-add-edit">Duration(Minutes)</label>
+                    <input asp-for="@Model.Duration" class="form-control" aria-required="true"  />
+                    <span asp-validation-for="@Model.Duration" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.AddedWeightLegs" class="form-label-add-edit">Weight+ Legs(Kg)</label>
+                    <input asp-for="@Model.AddedWeightLegs" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.AddedWeightLegs" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.AddedWeightUpperBody" class="form-label-add-edit">Weight+ UpperBody(Kg)</label>
+                    <input asp-for="@Model.AddedWeightUpperBody" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.AddedWeightUpperBody" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 mb-2">
+                    <label asp-for="@Model.Repetitions" class="form-label-add-edit">Repetitions</label>
+                    <input asp-for="@Model.Repetitions" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.Repetitions" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="mb-2">
+                <input class="btn btn-primary btn-dark-text w-100 py-2 fw-bold rounded" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+ 
