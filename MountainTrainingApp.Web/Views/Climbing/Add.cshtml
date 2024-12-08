@@ -1,6 +1,6 @@
-﻿  @model StrengthAddViewModel
+﻿ @model ClimbingAddViewModel
 @{
-    ViewData["Title"] = "Add Strength Workout";
+    ViewData["Title"] = "Add Climbing";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
@@ -14,11 +14,11 @@
             <div class="row">
 
                 <div class="col-sm-12 mb-4">
-                    <label asp-for="@Model.StrengthWorkoutTypes" class="form-label-add-edit">Select Strength Types</label>
-                    <select asp-for="@Model.StrengthWorkoutTypeId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.StrengthWorkoutTypes, "Id", "Name"))">
+                    <label asp-for="@Model.ClimbingActivities" class="form-label-add-edit">Select Climbing Type</label>
+                    <select asp-for="@Model.ClimbingActivityId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.ClimbingActivities, "Id", "Name"))">
                         <option value="">Select Types...</option>
                     </select>
-                    <span asp-validation-for="@Model.StrengthWorkoutTypeId" class="text-danger"></span>
+                    <span asp-validation-for="@Model.ClimbingActivityId" class="text-danger"></span>
                 </div>
                  <div class="col-sm-12 mb-4">
                     <label asp-for="@Model.TrainingPeriods" class="form-label-add-edit">Select Period</label>
@@ -51,21 +51,9 @@
                 </div>
 
                 <div class="col-sm-12 mb-2">
-                    <label asp-for="@Model.AddedWeightLegs" class="form-label-add-edit">Weight+ Legs(Kg)</label>
-                    <input asp-for="@Model.AddedWeightLegs" class="form-control" aria-required="true" />
-                    <span asp-validation-for="@Model.AddedWeightLegs" class="text-danger"></span>
-                </div>
-
-                <div class="col-sm-12 mb-2">
-                    <label asp-for="@Model.AddedWeightUpperBody" class="form-label-add-edit">Weight+ UpperBody(Kg)</label>
-                    <input asp-for="@Model.AddedWeightUpperBody" class="form-control" aria-required="true" />
-                    <span asp-validation-for="@Model.AddedWeightUpperBody" class="text-danger"></span>
-                </div>
-
-                <div class="col-sm-12 mb-2">
-                    <label asp-for="@Model.Repetitions" class="form-label-add-edit">Repetitions</label>
-                    <input asp-for="@Model.Repetitions" class="form-control" aria-required="true" />
-                    <span asp-validation-for="@Model.Repetitions" class="text-danger"></span>
+                    <label asp-for="@Model.RopesClimbed" class="form-label-add-edit">Ropes</label>
+                    <input asp-for="@Model.RopesClimbed" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.RopesClimbed" class="text-danger"></span>
                 </div>
 
             </div>

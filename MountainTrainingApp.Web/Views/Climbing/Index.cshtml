@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ClimbingIndexViewModel>
+
+<h2>All Strength Workouts</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Climbing Type</th>
+            <th>Period</th>
+            <th>DayOfWeek</th>
+            <th>DateAndTime</th>
+            <th>Duration</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sw in Model)
+        {
+            <tr>
+                <td>@sw.ClimbingActivity</td>
+                <td>@sw.TrainingPeriod</td>
+                <td>@sw.DayOfWeek</td>
+                <td>@sw.DateAndTime</td>
+                <td>@sw.Duration minutes</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@sw.Id" class="btn btn-info">Details</a>
+                    <a asp-action="AddToProgram" asp-route-movieId="@sw.Id" class="btn btn-primary">+Program</a>
+
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <form asp-controller="Watchlist" asp-action="AddToWatchlist" method="post" class="d-inline">
+                            <input type="hidden" name="movieId" value="@sw.Id" />
+                            <button type="submit" class="btn btn-warning">+Watchlist</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Strength" asp-action="Add" class="btn btn-primary">Add Strength</a>
