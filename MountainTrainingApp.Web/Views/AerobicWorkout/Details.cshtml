@@ -1,0 +1,40 @@
+﻿@model AerobicWorkoutDetailsViewModel
+@{
+    ViewData["Title"] = "AerobicWorkout Details";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
+    <h2>@ViewData["Title"]</h2>
+</div>
+<hr />
+
+<div class="row justify-content-center" style="margin: 0 auto; max-width: 800px;">
+
+    <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">@Model.AerobicActivity</h5>
+            <hr />
+            <h5 class="card-subtitle mb-2 text-muted">@Model.TrainingPeriod</h5>
+            <hr />
+            <h5 class="card-subtitle mb-2 text-muted">@Model.DateAndTime</h5>
+            <hr />
+            <p class="card-text">@Model.DayOfWeek</p>
+            <hr />
+            <p class="card-text"><small class="text-muted">Distance: @Model.Distance (km) / Duration: @Model.Duration (min)</small></p>
+            <p class="card-text"><small class="text-muted">ElevationGain: @Model.ElevationGain (m)/ Added Weigth :@Model.AddedWeight (kg)</small></p>
+            <p class="card-text"><small class="text-muted">Average HR: @Model.AverageHeartRate / Calories: @Model.BurnedCalories</small></p>
+            <p class="card-text"><small class="text-muted">Athet: @Model.AthetName </small></p>
+            <hr />
+        </div>
+        <div class="card-footer text-center">
+            <div class="d-flex justify-content-between align-items-center">
+                <a asp-controller="AerobicWorkout" asp-action="Index" class="btn btn-warning d-flex justify-content-center align-items-center flex-fill mx-1">Back</a>
+                @if (User?.Identity?.Name == @Model.AthetName)
+                {
+                    <a asp-controller="AerobicWorkout" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary d-flex justify-content-center align-items-center flex-fill mx-1">Edit</a>
+                    <a asp-controller="AerobicWorkout" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger d-flex justify-content-center align-items-center flex-fill mx-1" onclick="return confirm('Are you sure you want to delete this workout?');">Delete</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

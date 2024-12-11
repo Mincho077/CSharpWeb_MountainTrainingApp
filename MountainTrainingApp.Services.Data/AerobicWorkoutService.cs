@@ -55,5 +55,44 @@
             await context.AerobicWorkouts.AddAsync(workout);
             await context.SaveChangesAsync();
         }
+
+        public async Task<AerobicWorkoutDetailsViewModel?> GetDetailsByIdAsync(string aerobicWorkoutId)
+        {
+            AerobicWorkout? aerobicWorkout= await context.AerobicWorkouts
+                .Where(aw=>aw.IsDeleted==false)
+                .Include(aw=>aw.AerobicActivity)
+                .Include(aw=>aw.Athlet)
+                .Include(aw=>aw.TrainingPeriod)
+                .Include(aw=>aw.DayOfWeek)
+                .FirstOrDefaultAsync(aw=>aw.Id.ToString()==aerobicWorkoutId);
+
+            if (aerobicWorkout==null)
+            {
+                return null;
+            }
+
+            return new AerobicWorkoutDetailsViewModel()
+            {
+
+                Id = aerobicWorkout.Id.ToString(),
+                AerobicActivity = aerobicWorkout.AerobicActivity.Name,
+                TrainingPeriod = aerobicWorkout.TrainingPeriod.Name,
+                Duration = aerobicWorkout.Duration.ToString(),
+                Distance = aerobicWorkout.Distance.ToString(),
+                BurnedCalories = aerobicWorkout.BurnedCalories.ToString(),
+                AddedWeight = aerobicWorkout.AddedWeight.ToString(),
+                ElevationGain = aerobicWorkout.ElevationGain.ToString(),
+                AverageHeartRate = aerobicWorkout.AverageHeartRate.ToString(),
+                AthetName = aerobicWorkout.Athlet.UserName ?? string.Empty,
+                TrainerName = aerobicWorkout.Trainer?.User.UserName ?? string.Empty,
+                DateAndTime=aerobicWorkout.DateAndTime.ToString(DateFormat),
+                DayOfWeek=aerobicWorkout.DayOfWeek.Name,
+               
+
+            };
+
+            
+            
+        }
     }
 }

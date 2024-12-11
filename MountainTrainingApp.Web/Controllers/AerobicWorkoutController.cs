@@ -6,6 +6,7 @@
     using Web.ViewModels.AerobicWorkout;
     using Services.Data.Interfaces;
     using static Common.GeneralApplicationConstats;
+    using static Common.NotificationMessagesConstants;
     using Web.Infrastructure.Extensions;
 
     [Authorize]
@@ -123,7 +124,24 @@
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Mine()
+        [HttpGet]
+        public async Task<IActionResult> Details(string id)
+        {
+            var model=await 
+                aerobicWorkoutService.GetDetailsByIdAsync(id);
+
+            if (model==null)
+            {
+                TempData[ErrorMesage] = "Aerobic workout with the provided id does not exist";
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
         {
             return View();
         }

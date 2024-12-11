@@ -7,5 +7,7 @@ namespace MountainTrainingApp.Services.Data.Interfaces
         Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllAerobicWorkoutsAsync();
 
         Task CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date);
+
+        Task<AerobicWorkoutDetailsViewModel?> GetDetailsByIdAsync(string aerobicWorkoutId);
     }
 }

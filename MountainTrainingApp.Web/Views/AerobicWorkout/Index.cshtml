@@ -8,8 +8,7 @@
             <th>AerobicActivity</th>
             <th>DayOfWeek</th>
             <th>DateAndTime</th>
-            <th>Duration</th>
-            <th>Distance</th>
+            <th>Atlet Name</th>
         </tr>
     </thead>
     <tbody>
@@ -19,12 +18,9 @@
                 <td>@aw.AerobicActivity</td>
                 <td>@aw.DayOfWeek</td>
                 <td>@aw.DateAndTime</td>
-                <td>@aw.Duration minutes</td>
-                <td>@aw.Distance</td>
+                <td>@aw.AthetName</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@aw.Id" class="btn btn-info">Details</a>
-                    <a asp-action="AddToProgram" asp-route-movieId="@aw.Id" class="btn btn-primary">+Program</a>
-
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {
                         <form asp-controller="Watchlist" asp-action="AddToWatchlist" method="post" class="d-inline">
