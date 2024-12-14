@@ -8,6 +8,7 @@
     using static Common.GeneralApplicationConstats;
     using static Common.NotificationMessagesConstants;
     using Web.Infrastructure.Extensions;
+    using MountainTrainingApp.Services.Data.Models.AerobicWorkout;
 
     [Authorize]
     public class AerobicWorkoutController : Controller
@@ -26,10 +27,20 @@
             this.trainingPeriodService = trainingPeriodService;
             this.dayOfWeekService = dayOfWeekService;
         }
-        public async Task<IActionResult> Index()
+
+        [HttpGet]
+        public async Task<IActionResult> Index([FromQuery]IndexQueryModel queryModel)
         {
-           var model= await aerobicWorkoutService.AllAerobicWorkoutsAsync();
-            return View(model);
+            IndexWorkoutsFilteredAndPagedServiceModel model =await aerobicWorkoutService.AllAerobicWorkoutsAsync(queryModel);
+
+            queryModel.AerobicWorkouts= model.AerobicWorkouts;
+
+            queryModel.TotalWorkouts = model.TotalWorkoutsCount;
+
+            queryModel.Types = await 
+                aerobicActivityService.AllAerobicActivitiesNamesAsync();
+
+            return View(queryModel);
         }
 
         [HttpGet]

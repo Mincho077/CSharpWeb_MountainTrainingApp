@@ -30,5 +30,12 @@
             })
             .ToArrayAsync();
         }
+
+        public async Task<IEnumerable<string>> AllAerobicActivitiesNamesAsync()
+        {
+            return await context.AerobicActivities
+                .Select(aa => aa.Name)
+                .ToArrayAsync();
+        }
     }
 }

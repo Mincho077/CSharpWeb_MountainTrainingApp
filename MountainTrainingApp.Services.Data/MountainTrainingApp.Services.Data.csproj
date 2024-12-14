@@ -10,6 +10,7 @@
     <ProjectReference Include="..\MountainTrainingApp.Common\MountainTrainingApp.Common.csproj" />
     <ProjectReference Include="..\MountainTrainingApp.Data.Models\MountainTrainingApp.Data.Models.csproj" />
     <ProjectReference Include="..\MountainTrainingApp.Data\MountainTrainingApp.Data.csproj" />
+    <ProjectReference Include="..\MountainTrainingApp.Services.Data.Models\MountainTrainingApp.Services.Data.Models.csproj" />
     <ProjectReference Include="..\MountainTrainingApp.Web.ViewModels\MountainTrainingApp.Web.ViewModels.csproj" />
   </ItemGroup>
 

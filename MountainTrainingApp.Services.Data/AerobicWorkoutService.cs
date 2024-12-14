@@ -4,10 +4,13 @@
     using MountainTrainingApp.Data;
     using MountainTrainingApp.Data.Models;
     using MountainTrainingApp.Services.Data.Interfaces;
+    using MountainTrainingApp.Services.Data.Models.AerobicWorkout;
     using MountainTrainingApp.Web.ViewModels.AerobicWorkout;
+    using MountainTrainingApp.Web.ViewModels.AerobicWorkout.Enums;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using static Common.GeneralApplicationConstats;
+
 
     public class AerobicWorkoutService : IAerobicWorkoutService
     {
@@ -17,23 +20,6 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllAerobicWorkoutsAsync()
-        {
-            return await context.AerobicWorkouts
-                .Where(aw=>aw.IsDeleted==false)
-                .OrderByDescending(aw => aw.DateAndTime)
-                .Select(aw => new AerobicWorkoutIndexViewModel
-                {
-                    Id=aw.Id.ToString(),
-                    AerobicActivity=aw.AerobicActivity.Name,
-                    DayOfWeek=aw.DayOfWeek.Name,
-                    DateAndTime=aw.DateAndTime.ToString(DateFormat),
-                    Duration=aw.Duration.ToString(),
-                    Distance=aw.Distance.ToString(),
-                    AthetName=aw.Athlet.UserName??string.Empty
-                })
-                .ToArrayAsync();
-        }
 
         public async Task  CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date)
         {
@@ -68,7 +54,7 @@
 
             if (aerobicWorkout==null)
             {
-                return null;
+               
             }
 
             return new AerobicWorkoutDetailsViewModel()
@@ -93,6 +79,66 @@
 
             
             
+        }
+
+        public async Task<IndexWorkoutsFilteredAndPagedServiceModel> AllAerobicWorkoutsAsync(IndexQueryModel model)
+        {
+            IQueryable<AerobicWorkout> aerobicWorkoutsQuery =
+            context.AerobicWorkouts
+                   .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(model.Type))
+            {
+                aerobicWorkoutsQuery = aerobicWorkoutsQuery
+                    .Where(a => a.AerobicActivity.Name == model.Type);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SearchString))
+            {
+                string wildCard = $"%{model.SearchString.ToLower()}%";
+                aerobicWorkoutsQuery = aerobicWorkoutsQuery
+                    .Where(a => 
+                    EF.Functions.Like(a.AerobicActivity.Name,wildCard) ||
+                    EF.Functions.Like(a.AverageHeartRate, wildCard) ||
+                    EF.Functions.Like(a.DayOfWeek.Name, wildCard
+                    ));
+            }
+
+            aerobicWorkoutsQuery = model.WorkoutSorting switch
+            {
+                WorkoutSorting.Newest => aerobicWorkoutsQuery
+                .OrderBy(a=>a.DateAndTime),
+                WorkoutSorting.Oldest => aerobicWorkoutsQuery
+               .OrderByDescending(a => a.DateAndTime),
+                WorkoutSorting.Longest => aerobicWorkoutsQuery
+               .OrderByDescending(a => a.Duration),
+               WorkoutSorting.Shortest => aerobicWorkoutsQuery
+               .OrderBy(a=>a.Duration),
+                
+            };
+
+            IEnumerable<AerobicWorkoutIndexViewModel> aerobicWorkouts =await aerobicWorkoutsQuery
+                 .Skip((model.CurrentPage - 1) * model.WorkoutsPerPage)
+                 .Take(model.WorkoutsPerPage)
+                 .Select(aw => new AerobicWorkoutIndexViewModel()
+                 {
+                     Id = aw.Id.ToString(),
+                     AerobicActivity = aw.AerobicActivity.Name,
+                     DayOfWeek = aw.DayOfWeek.Name,
+                     DateAndTime = aw.DateAndTime.ToString(DateFormat),
+                     Duration = aw.Duration.ToString(),
+                     Distance = aw.Distance.ToString(),
+                     AthetName = aw.Athlet.UserName ?? string.Empty
+                 })
+                 .ToArrayAsync();
+
+            int totalWorkouts=aerobicWorkoutsQuery.Count();
+
+            return new   IndexWorkoutsFilteredAndPagedServiceModel()
+            {
+                AerobicWorkouts = aerobicWorkouts,
+                TotalWorkoutsCount=totalWorkouts,
+            };
         }
     }
 }

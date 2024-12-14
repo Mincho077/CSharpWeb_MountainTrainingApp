@@ -4,6 +4,7 @@
     public interface IAerobicActivityService
     {
         Task<IEnumerable<AerobicActivityViewMode>> AllAerobicActivitiesAsync();
+        Task<IEnumerable<string>> AllAerobicActivitiesNamesAsync();
         Task<bool> AerobicActivityExistByIdAsync(int id);
        
     }

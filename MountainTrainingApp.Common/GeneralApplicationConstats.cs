@@ -6,5 +6,9 @@
 
         public const string DateFormat = "dd/MM/yyyy HH:mm";
 
+        public const int DefaultPage = 1;
+
+        public const int EntitiesPerPage = 7;
+
     }
 }

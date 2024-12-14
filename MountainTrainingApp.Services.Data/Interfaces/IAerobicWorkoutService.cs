@@ -1,10 +1,12 @@
-﻿using MountainTrainingApp.Web.ViewModels.AerobicWorkout;
+﻿using MountainTrainingApp.Services.Data.Models.AerobicWorkout;
+using MountainTrainingApp.Web.ViewModels.AerobicWorkout;
 
 namespace MountainTrainingApp.Services.Data.Interfaces
 {
     public interface IAerobicWorkoutService
     {
-        Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllAerobicWorkoutsAsync();
+
+        Task<IndexWorkoutsFilteredAndPagedServiceModel> AllAerobicWorkoutsAsync(IndexQueryModel model);
 
         Task CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date);
 
