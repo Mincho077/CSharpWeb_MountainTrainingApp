@@ -107,15 +107,20 @@
             aerobicWorkoutsQuery = model.WorkoutSorting switch
             {
                 WorkoutSorting.Newest => aerobicWorkoutsQuery
-                .OrderBy(a=>a.DateAndTime),
+                .OrderByDescending(a => a.DateAndTime),
                 WorkoutSorting.Oldest => aerobicWorkoutsQuery
-               .OrderByDescending(a => a.DateAndTime),
-                WorkoutSorting.Longest => aerobicWorkoutsQuery
+               .OrderBy(a => a.DateAndTime),
+                WorkoutSorting.LongestDuration => aerobicWorkoutsQuery
                .OrderByDescending(a => a.Duration),
-               WorkoutSorting.Shortest => aerobicWorkoutsQuery
-               .OrderBy(a=>a.Duration),
+                WorkoutSorting.ShortestDuration => aerobicWorkoutsQuery
+                .OrderBy(a => a.Duration),
+                WorkoutSorting.ShortestDistance => aerobicWorkoutsQuery
+                .OrderBy(a => a.Distance),
+                WorkoutSorting  => aerobicWorkoutsQuery
+                .OrderByDescending(a => a.Distance),
                 
-            };
+
+            };          
 
             IEnumerable<AerobicWorkoutIndexViewModel> aerobicWorkouts =await aerobicWorkoutsQuery
                  .Skip((model.CurrentPage - 1) * model.WorkoutsPerPage)

@@ -31,8 +31,10 @@
              <select asp-for="WorkoutSorting" class="form-control">
                 <option value="0">Newest</option>
                 <option value="1">Oldest</option>
-                <option value="2">Longest</option>
-                <option value="3">Shortest</option>
+                <option value="2">Longest(Duration)</option>
+                <option value="3">Shortest(Duration)</option>
+                <option value="4">Longest(Distance)</option>
+                <option value="5">Shortest(Distance)</option>
             </select>
             </div>
         </div>
@@ -83,38 +85,13 @@ var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
 </div>
 </div>
 
+@if (!Model.AerobicWorkouts.Any())
+{
+    <h2 class="text-center">No workout found by the given criteria!</h2>
+}
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>AerobicActivity</th>
-            <th>DayOfWeek</th>
-            <th>DateAndTime</th>
-            <th>Atlet Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var aw in Model.AerobicWorkouts)
-        {
-            <tr>
-                <td>@aw.AerobicActivity</td>
-                <td>@aw.DayOfWeek</td>
-                <td>@aw.DateAndTime</td>
-                <td>@aw.AthetName</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@aw.Id" class="btn btn-info">Details</a>
-                    @if (User?.Identity?.IsAuthenticated ?? false)
-                    {
-                        <form asp-controller="Watchlist" asp-action="AddToWatchlist" method="post" class="d-inline">
-                            <input type="hidden" name="movieId" value="@aw.Id" />
-                            <button type="submit" class="btn btn-warning">+Watchlist</button>
-                        </form>
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div>
+    <partial name="_AerobicWorkoutPartial"/>
+</div>
 
-<a asp-controller="AerobicWorkout" asp-action="Add" class="btn btn-primary">Add Aerobic</a>
  
