@@ -141,21 +141,32 @@
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var model=await 
-                aerobicWorkoutService.GetDetailsByIdAsync(id);
 
-            if (model==null)
+            bool workoutExist = await aerobicWorkoutService
+                .AerobicWorkoutExistByIdAsync(id);
+
+            if (!workoutExist)
             {
                 TempData[ErrorMesage] = "Aerobic workout with the provided id does not exist";
 
                 return RedirectToAction(nameof(Index));
             }
 
+            var model = await
+                aerobicWorkoutService.GetDetailsByIdAsync(id);
+
             return View(model);
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AerobicWorkoutEditViewModel model,string id)
         {
             return View();
         }

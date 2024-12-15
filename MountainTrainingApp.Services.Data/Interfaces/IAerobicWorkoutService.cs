@@ -10,10 +10,14 @@ namespace MountainTrainingApp.Services.Data.Interfaces
 
         Task CreateAerobicWorkoutAsync(AerobicWorkoutAddViewModel model, string athletId,DateTime date);
 
-        Task<AerobicWorkoutDetailsViewModel?> GetDetailsByIdAsync(string aerobicWorkoutId);
+        Task<AerobicWorkoutDetailsViewModel> GetDetailsByIdAsync(string aerobicWorkoutId);
 
         Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllByTrainerIdAsync(string trainerId);
 
         Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllByAthletIdIdAsync(string athletId);
+
+        Task<bool>AerobicWorkoutExistByIdAsync(string aerobicWorkoutId);
+
+        Task<AerobicWorkoutEditViewModel> GetForEditByIdAsync(string aerobicWorkoutId);
     }
 }

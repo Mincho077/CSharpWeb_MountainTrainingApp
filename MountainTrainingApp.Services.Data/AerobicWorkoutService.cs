@@ -42,20 +42,16 @@
             await context.SaveChangesAsync();
         }
 
-        public async Task<AerobicWorkoutDetailsViewModel?> GetDetailsByIdAsync(string aerobicWorkoutId)
+        public async Task<AerobicWorkoutDetailsViewModel> GetDetailsByIdAsync(string aerobicWorkoutId)
         {
-            AerobicWorkout? aerobicWorkout= await context.AerobicWorkouts
+            AerobicWorkout aerobicWorkout= await context.AerobicWorkouts
                 .Where(aw=>aw.IsDeleted==false)
                 .Include(aw=>aw.AerobicActivity)
                 .Include(aw=>aw.Athlet)
                 .Include(aw=>aw.TrainingPeriod)
                 .Include(aw=>aw.DayOfWeek)
-                .FirstOrDefaultAsync(aw=>aw.Id.ToString()==aerobicWorkoutId);
+                .FirstAsync(aw=>aw.Id.ToString()==aerobicWorkoutId);
 
-            if (aerobicWorkout==null)
-            {
-                return null;
-            }
 
             return new AerobicWorkoutDetailsViewModel()
             {
@@ -183,6 +179,39 @@
               .ToArrayAsync();
 
             return allAthletWorkouts;
+        }
+
+        public async Task<bool> AerobicWorkoutExistByIdAsync(string aerobicWorkoutId)
+        {
+            return await context.AerobicWorkouts
+                .Where(aw => aw.IsDeleted==false)
+                .AnyAsync(aw => aw.Id.ToString() == aerobicWorkoutId);
+        }
+
+        public async Task<AerobicWorkoutEditViewModel> GetForEditByIdAsync(string aerobicWorkoutId)
+        {
+            AerobicWorkout aerobicWorkout = await context.AerobicWorkouts
+               .Where(aw => aw.Id.ToString()==aerobicWorkoutId && aw.IsDeleted==false)
+               .Include(aw => aw.AerobicActivity)
+               .Include(aw => aw.TrainingPeriod)
+               .Include(aw => aw.DayOfWeek)
+               .FirstAsync(aw => aw.Id.ToString() == aerobicWorkoutId);
+
+            return new AerobicWorkoutEditViewModel()
+            {
+                Id = aerobicWorkout.Id.ToString(),
+                AerobicActivityId = aerobicWorkout.AerobicActivityId,
+                TrainingPeriodId = aerobicWorkout.TrainingPeriodId,
+                Duration = aerobicWorkout.Duration,
+                Distance = aerobicWorkout.Distance,
+                BurnedCalories = aerobicWorkout.BurnedCalories,
+                AddedWeight = aerobicWorkout.AddedWeight,
+                ElevationGain = aerobicWorkout.ElevationGain,
+                AverageHeartRate = aerobicWorkout.AverageHeartRate,
+                DateAndTime = aerobicWorkout.DateAndTime.ToString(DateFormat),
+                DayOfWeekId = aerobicWorkout.DayOfWeekId,
+
+            };
         }
     }
 }
