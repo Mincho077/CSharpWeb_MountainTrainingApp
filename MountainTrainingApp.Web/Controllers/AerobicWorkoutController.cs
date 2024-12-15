@@ -156,5 +156,11 @@
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Mine(string id)
+        {
+            return View();
+        }
     }
 }

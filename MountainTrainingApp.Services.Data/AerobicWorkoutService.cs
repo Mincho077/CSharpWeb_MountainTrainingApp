@@ -123,6 +123,7 @@
             };          
 
             IEnumerable<AerobicWorkoutIndexViewModel> aerobicWorkouts =await aerobicWorkoutsQuery
+                 .Where(aw=>aw.IsDeleted==false)
                  .Skip((model.CurrentPage - 1) * model.WorkoutsPerPage)
                  .Take(model.WorkoutsPerPage)
                  .Select(aw => new AerobicWorkoutIndexViewModel()
@@ -144,6 +145,46 @@
                 AerobicWorkouts = aerobicWorkouts,
                 TotalWorkoutsCount=totalWorkouts,
             };
+        }
+
+        public async Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllByTrainerIdAsync(string trainerId)
+        {
+             IEnumerable<AerobicWorkoutIndexViewModel> allTrainerWorkouts = await
+               context.AerobicWorkouts
+               .Where(aw => aw.TrainerId.ToString() == trainerId && aw.IsDeleted == false)
+               .Select(aw => new AerobicWorkoutIndexViewModel()
+               {
+                   Id = aw.Id.ToString(),
+                   AerobicActivity = aw.AerobicActivity.Name,
+                   DayOfWeek = aw.DayOfWeek.Name,
+                   DateAndTime = aw.DateAndTime.ToString(DateFormat),
+                   Duration = aw.Duration.ToString(),
+                   Distance = aw.Distance.ToString(),
+                   AthetName = aw.Athlet.UserName ?? string.Empty
+               })
+               .ToArrayAsync();
+
+            return allTrainerWorkouts;
+        }
+
+        public async Task<IEnumerable<AerobicWorkoutIndexViewModel>> AllByAthletIdIdAsync(string athletId)
+        {
+            IEnumerable<AerobicWorkoutIndexViewModel> allAthletWorkouts = await
+              context.AerobicWorkouts
+              .Where(aw => aw.AthletId.ToString() == athletId && aw.IsDeleted == false)
+              .Select(aw => new AerobicWorkoutIndexViewModel()
+              {
+                  Id = aw.Id.ToString(),
+                  AerobicActivity = aw.AerobicActivity.Name,
+                  DayOfWeek = aw.DayOfWeek.Name,
+                  DateAndTime = aw.DateAndTime.ToString(DateFormat),
+                  Duration = aw.Duration.ToString(),
+                  Distance = aw.Distance.ToString(),
+                  AthetName = aw.Athlet.UserName ?? string.Empty
+              })
+              .ToArrayAsync();
+
+            return allAthletWorkouts;
         }
     }
 }
