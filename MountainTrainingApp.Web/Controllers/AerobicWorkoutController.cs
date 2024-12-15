@@ -17,15 +17,18 @@
         private readonly IAerobicWorkoutService aerobicWorkoutService;
         private readonly ITrainingPeriodService trainingPeriodService;
         private readonly IDayOfWeekService dayOfWeekService;
+        private readonly ITrainerService trainerService;
         public AerobicWorkoutController(IAerobicActivityService aerobicActivityService
             ,IAerobicWorkoutService aerobicWorkoutService
             ,ITrainingPeriodService trainingPeriodService
-            ,IDayOfWeekService dayOfWeekService)
+            ,IDayOfWeekService dayOfWeekService
+            ,ITrainerService trainerService)
         {
             this.aerobicActivityService = aerobicActivityService;
             this.aerobicWorkoutService = aerobicWorkoutService;
             this.trainingPeriodService = trainingPeriodService;
             this.dayOfWeekService = dayOfWeekService;
+            this.trainerService = trainerService;
         }
 
         [HttpGet]
@@ -160,7 +163,26 @@
         [HttpGet]
         public async Task<IActionResult> Mine(string id)
         {
-            return View();
+            List<AerobicWorkoutIndexViewModel> myAerobicWorkouts = 
+                new List<AerobicWorkoutIndexViewModel>();
+
+            string athletId=User.GetUserId();
+            bool isUserTrainer=await 
+                trainerService.TainerExistByUserIdAsync(athletId);
+
+            if (isUserTrainer)
+            {
+                string trainerId = await
+                    trainerService.GetTrainerIdByUserId(athletId);
+
+                myAerobicWorkouts.AddRange(await aerobicWorkoutService.AllByTrainerIdAsync(trainerId));
+            }
+            else 
+            {
+                myAerobicWorkouts.AddRange(await aerobicWorkoutService.AllByAthletIdIdAsync(athletId));
+            }
+
+            return View(myAerobicWorkouts);
         }
     }
 }

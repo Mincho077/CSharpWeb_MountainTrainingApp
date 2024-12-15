@@ -26,6 +26,18 @@
             await context.SaveChangesAsync();
         }
 
+        public async Task<string> GetTrainerIdByUserId(string userId)
+        {
+           Trainer? trainer= await context.Trainers
+                .FindAsync(userId);
+            if (trainer==null)
+            {
+                return "Invalid Id";
+            }
+
+            return trainer.Id.ToString();
+        }
+
         public async Task<bool> HasAerobicWorkoutsByUserIdAsync(string userId)
         {
             ApplicationUser? user = await context.Users
