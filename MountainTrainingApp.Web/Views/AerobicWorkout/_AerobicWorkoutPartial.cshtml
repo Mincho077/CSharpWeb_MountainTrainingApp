@@ -1,0 +1,34 @@
+﻿@model IndexQueryModel
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>AerobicActivity</th>
+            <th>DayOfWeek</th>
+            <th>DateAndTime</th>
+            <th>Atlet Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aw in Model.AerobicWorkouts)
+        {
+            <tr>
+                <td>@aw.AerobicActivity</td>
+                <td>@aw.DayOfWeek</td>
+                <td>@aw.DateAndTime</td>
+                <td>@aw.AthetName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@aw.Id" class="btn btn-info">Details</a>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <form asp-controller="Watchlist" asp-action="AddToWatchlist" method="post" class="d-inline">
+                            <input type="hidden" name="movieId" value="@aw.Id" />
+                            <button type="submit" class="btn btn-warning">+Watchlist</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="AerobicWorkout" asp-action="Add" class="btn btn-primary">Add Aerobic</a>
