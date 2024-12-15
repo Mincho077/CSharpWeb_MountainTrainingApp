@@ -4,7 +4,9 @@
     {
         Newest=0,
         Oldest=1,
-        Longest=2,
-        Shortest=3,
+        LongestDuration=2,
+        ShortestDuration=3,
+        LongestDistance = 4,
+        ShortestDistance=5,      
     }
 }
