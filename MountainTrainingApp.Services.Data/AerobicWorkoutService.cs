@@ -54,7 +54,7 @@
 
             if (aerobicWorkout==null)
             {
-               
+                return null;
             }
 
             return new AerobicWorkoutDetailsViewModel()
@@ -72,8 +72,7 @@
                 AthetName = aerobicWorkout.Athlet.UserName ?? string.Empty,
                 TrainerName = aerobicWorkout.Trainer?.User.UserName ?? string.Empty,
                 DateAndTime=aerobicWorkout.DateAndTime.ToString(DateFormat),
-                DayOfWeek=aerobicWorkout.DayOfWeek.Name,
-               
+                DayOfWeek=aerobicWorkout.DayOfWeek.Name,               
 
             };
 
@@ -117,8 +116,7 @@
                 WorkoutSorting.ShortestDistance => aerobicWorkoutsQuery
                 .OrderBy(a => a.Distance),
                 WorkoutSorting  => aerobicWorkoutsQuery
-                .OrderByDescending(a => a.Distance),
-                
+                .OrderByDescending(a => a.Distance),              
 
             };          
 
