@@ -1,4 +1,16 @@
-﻿@model IndexQueryModel
+﻿@model List<AerobicWorkoutIndexViewModel>
+@{
+    ViewData["Title"] = "My aerobic workouts";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <h2 class="text-center">You dont have any workouts yet!</h2>
+}
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -9,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var aw in Model.AerobicWorkouts)
+        @foreach (var aw in Model)
         {
             <tr>
                 <td>@aw.AerobicActivity</td>
@@ -29,6 +41,5 @@
             </tr>
         }
     </tbody>
-</table> 
+</table>
 <a asp-controller="AerobicWorkout" asp-action="Add" class="btn btn-primary">Add Aerobic</a>
-
